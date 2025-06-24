@@ -1,0 +1,21 @@
+@startuml
+title Задание 3. Диаграмма контекста PropDevelopment
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(Owner, "Собственник", "Управляет умным домом")
+System(MobileApp, "Мобильное приложение PropDevelopment", "Приложение для оплаты ЖКХ и работы с умным домом")
+
+System_Ext(HCS, "ЖКХ", "Предоставляет информацию о ЖКХ")
+System_Ext(Payment, "Платежная система", "Позволяет оплачивать ЖКХ")
+System_Ext(Intercom, "Умный Домофон", "Открывает двери по биометрии")
+System_Ext(Barrier, "Умный Шлагбаум", "Открывает шлагбаум по номеру автомобиля или звонку")
+
+
+Rel(Owner, MobileApp, "Использует")
+Rel(MobileApp, HCS, "Запросы к сервису ЖКХ")
+Rel(MobileApp, Payment, "Запросы к платежным сервисам")
+Rel(MobileApp, Intercom, "Вызов API партнера")
+Rel(MobileApp, Barrier, "Вызов API партнера")
+
+@enduml
